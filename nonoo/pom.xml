@@ -9,5 +9,6 @@
   <description>The parent project of nonoo</description>
   <modules>
     <module>nonoo-admin</module>
+    <module>nonoo-webapp</module>
   </modules>
 </project>
