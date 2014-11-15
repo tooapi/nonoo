@@ -11,5 +11,6 @@
     <module>nonoo-admin</module>
     <module>nonoo-webapp</module>
     <module>nonoo-common</module>
+    <module>nonoo-test</module>
   </modules>
 </project>
