@@ -7,9 +7,7 @@
     <artifactId>nonoo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.fdp</groupId>
   <artifactId>nonoo-webapp</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>nonoo-webapp Maven Webapp</name>
   <url>http://maven.apache.org</url>
