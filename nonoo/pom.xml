@@ -12,5 +12,6 @@
     <module>nonoo-webapp</module>
     <module>nonoo-common</module>
     <module>nonoo-test</module>
+    <module>nonoo-maven</module>
   </modules>
 </project>
