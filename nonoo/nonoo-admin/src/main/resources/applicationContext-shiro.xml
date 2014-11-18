@@ -5,15 +5,102 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 	default-lazy-init="true">
 
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/admin/login.jsp" />
-		<property name="successUrl" value="/admin/common/main.jhtml" />
+		<property name="loginUrl" value="/login.jsp" />
+		<property name="successUrl" value="/common/main.jhtml" />
+		<property name="unauthorizedUrl" value="/login.jsp" />
+		<property name="filterChainDefinitions">
+			<value>
+				/logout.jsp = logout
+				/common/captcha.jhtml = anon
 
+				/product/** = perms["admin:product"]
+				/product_category/** = perms["admin:productCategory"]
+				/parameter_group/** = perms["admin:parameterGroup"]
+				/attribute/** = perms["admin:attribute"]
+				/specification/** = perms["admin:specification"]
+				/brand/** = perms["admin:brand"]
+				/product_notify/** = perms["admin:productNotify"]
+
+				/order/** = perms["admin:order"]
+				/print/** = perms["admin:print"]
+				/payment/** = perms["admin:payment"]
+				/refunds/** = perms["admin:refunds"]
+				/shipping/** = perms["admin:shipping"]
+				/returns/** = perms["admin:returns"]
+				/delivery_center/** = perms["admin:deliveryCenter"]
+				/delivery_template/** = perms["admin:deliveryTemplate"]
+
+				/member/** = perms["admin:member"]
+				/member_rank/** = perms["admin:memberRank"]
+				/member_attribute/** = perms["admin:memberAttribute"]
+				/review/** = perms["admin:review"]
+				/consultation/** = perms["admin:consultation"]
+
+				/navigation/** = perms["admin:navigation"]
+				/article/** = perms["admin:article"]
+				/article_category/** = perms["admin:articleCategory"]
+				/tag/** = perms["admin:tag"]
+				/friend_link/** = perms["admin:friendLink"]
+				/ad_position/** = perms["admin:adPosition"]
+				/ad/** = perms["admin:ad"]
+				/template/** = perms["admin:template"]
+				/cache/** = perms["admin:cache"]
+				/static/** = perms["admin:static"]
+				/index/** = perms["admin:index"]
+
+				/promotion/** = perms["admin:promotion"]
+				/coupon/** = perms["admin:coupon"]
+				/seo/** = perms["admin:seo"]
+				/sitemap/** = perms["admin:sitemap"]
+
+				/statistics/** = perms["admin:statistics"]
+				/sales/** = perms["admin:sales"]
+				/sales_ranking/** = perms["admin:salesRanking"]
+				/purchase_ranking/** = perms["admin:purchaseRanking"]
+				/deposit/** = perms["admin:deposit"]
+
+				/setting/** = perms["admin:setting"]
+				/area/** = perms["admin:area"]
+				/payment_method/** = perms["admin:paymentMethod"]
+				/shipping_method/** = perms["admin:shippingMethod"]
+				/delivery_corp/** = perms["admin:deliveryCorp"]
+				/payment_plugin/** = perms["admin:paymentPlugin"]
+				/storage_plugin/** = perms["admin:storagePlugin"]
+				/** = perms["admin:admin"]
+				/role/** = perms["admin:role"]
+				/message/** = perms["admin:message"]
+				/log/** = perms["admin:log"]
+
+				/** = authc
+			</value>
+		</property>
+		<property name="filters">
+			<map>
+				<entry key="authc" value-ref="authenticationFilter" />
+			</map>
+		</property>
 	</bean>
 
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="authenticationRealm" />
+		<property name="cacheManager" ref="shiroCacheManager" />
+	</bean>
+
+	<bean id="authenticationRealm" class="com.fdp.nonoo.AuthenticationRealm">
+		<property name="authorizationCacheName" value="authorization" />
+	</bean>
+
+	<bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManager" ref="ehCacheManager" />
+	</bean>
+
+	<bean id="authenticationFilter" class="com.fdp.nonoo.filter.AuthenticationFilter" />
+
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager" />
+		<property name="arguments" ref="securityManager" />
 	</bean>
 
 

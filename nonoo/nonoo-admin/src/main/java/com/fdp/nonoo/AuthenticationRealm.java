@@ -6,10 +6,9 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.springframework.stereotype.Component;
 
 
-@Component("authenticationRealm")
+
 public class AuthenticationRealm extends AuthorizingRealm {
 
 	@Override
