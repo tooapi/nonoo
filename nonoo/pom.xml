@@ -21,6 +21,7 @@
 		<spring.version>4.0.2.RELEASE</spring.version>
 		<javax.servlet.version>2.5</javax.servlet.version>
 		<freemarker.version>2.3.19</freemarker.version>
+	<apache.shiro.version>1.2.3</apache.shiro.version>
 
 	</properties>
 	<dependencyManagement>
@@ -93,6 +94,29 @@
 				<artifactId>freemarker</artifactId>
 				<version>${freemarker.version}</version>
 			</dependency>
+			
+			
+			<!-- Shiro -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${apache.shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${apache.shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-cas</artifactId>
+			<version>${apache.shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${apache.shiro.version}</version>
+		</dependency>
 
 
 		</dependencies>
