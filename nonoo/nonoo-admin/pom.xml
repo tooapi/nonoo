@@ -20,6 +20,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.fdp</groupId>
+			<artifactId>nonoo-common</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>

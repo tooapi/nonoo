@@ -88,7 +88,7 @@
 		<property name="cacheManager" ref="shiroCacheManager" />
 	</bean>
 
-	<bean id="authenticationRealm" class="com.fdp.nonoo.AuthenticationRealm">
+	<bean id="authenticationRealm" class="com.fdp.nonoo.common.AuthenticationRealm">
 		<property name="authorizationCacheName" value="authorization" />
 	</bean>
 
