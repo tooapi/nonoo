@@ -7,8 +7,10 @@ public class AuthenticationToken extends UsernamePasswordToken {
 	private String captchaId;
 	private String captcha;
 
-	public AuthenticationToken(String username, String password,String captchaId, String captcha, boolean rememberMe, String host) {
-		super(username, password, rememberMe);
+	public AuthenticationToken(String username, String password,String captchaId, String captcha, boolean isRememberMe, String host) {
+	   
+		
+		super(username, password, isRememberMe);
 	    super.setHost(host);
 		this.captchaId = captchaId;
 		this.captcha = captcha;

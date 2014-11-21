@@ -187,6 +187,13 @@
 				<version>1.9</version>
 			</dependency>
 
+           <!-- BouncyCastleProvider -->
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcprov-jdk15on</artifactId>
+				<version>1.47</version>
+			</dependency>
+
 
 			<!-- Jackson -->
 			<dependency>

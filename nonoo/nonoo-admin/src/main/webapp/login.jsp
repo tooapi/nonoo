@@ -1,4 +1,32 @@
 <%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@page import="com.fdp.nonoo.common.Setting"%>
+<%@page import="com.fdp.nonoo.util.SettingUtils"%>
+<%@page import="com.fdp.nonoo.util.SpringUtils"%>
+<%@page import="org.apache.shiro.web.filter.authc.FormAuthenticationFilter"%>
+<%@page import="java.util.UUID"%>
+<%@page import="com.fdp.nonoo.common.Setting.AccountLockType"%>
+<%@page import="org.apache.commons.lang.ArrayUtils"%>
+<%@page import="com.fdp.nonoo.common.Setting.CaptchaType"%>
+<%@page import="java.security.interfaces.RSAPublicKey"%>
+<%@page import="org.apache.commons.codec.binary.Base64"%>
+<%@page import="com.fdp.nonoo.service.RSAService"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%
+String base = request.getContextPath();
+String captchaId = UUID.randomUUID().toString();
+ApplicationContext applicationContext = SpringUtils.getApplicationContext();
+Setting setting = SettingUtils.get();
+if (applicationContext != null) {
+%>
+<shiro:authenticated>
+<%
+response.sendRedirect(base + "/admin/common/main.jhtml");
+%>
+</shiro:authenticated>
+<%
+}
+%>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -23,8 +51,7 @@
   </div>
   <div class="collapse navbar-collapse" >
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/member/login.php">登陆</a></li>
-      <li><a href="/member/index_do.php?fmdo=user&dopost=regnew">注册</a></li>
+      
     </ul>
     
   </div>
@@ -42,7 +69,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading"><h4>用户登录</h4></div>
 				<div class="panel-body">
-					<form action="" method="post">
+					<form action="login.jsp" method="post">
 					
 					       <div class="form-group">
 								<label class="control-label">用户名：</label>
@@ -52,6 +79,9 @@
 							 <div class="form-group">
 								<label class="control-label">密&nbsp;&nbsp;码：</label>
 						           <input type="password" class="form-control input-lg" name="password" id="password" placeholder="">
+							</div>
+					       <div class="checkbox">
+								<label> <input name="isRememberMe" id="isRememberMe" type="checkbox">下次自动登录</label>					         
 							</div>
 					
 						
