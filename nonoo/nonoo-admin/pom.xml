@@ -170,6 +170,23 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+		</dependency>
+
+
+
+		<!-- Jcaptcha -->
+		<dependency>
+			<groupId>com.octo.jcaptcha</groupId>
+			<artifactId>jcaptcha</artifactId>
+		</dependency>
 
 		<!-- BouncyCastleProvider -->
 		<dependency>
@@ -177,11 +194,7 @@
 			<artifactId>bcprov-jdk15on</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>jaxen</groupId>
-			<artifactId>jaxen</artifactId>
-			<version>1.1.6</version>
-		</dependency>
+
 
 
 	</dependencies>

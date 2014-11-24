@@ -28,7 +28,7 @@ import com.fdp.nonoo.util.SettingUtils;
 
 
 public class AuthenticationRealm extends AuthorizingRealm {
-	@Resource(name = "captchaServiceImpl")
+	@Resource(name = "captchaService")
 	private CaptchaService captchaService;
 
 	@Resource(name = "adminServiceImpl")
@@ -43,8 +43,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
 		String captchaId = authToken.getCaptchaId();
 		String captcha = authToken.getCaptcha();
 		String hostIp = authToken.getHost();
-		if (!captchaService.isValid(Setting.CaptchaType.adminLogin, captchaId,
-				captcha)) {
+		if (!captchaService.isValid(Setting.CaptchaType.adminLogin, captchaId,captcha)) {
 			throw new UnsupportedTokenException();
 		}
 

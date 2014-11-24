@@ -7,7 +7,6 @@ import java.security.interfaces.RSAPublicKey;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -15,7 +14,7 @@ import org.springframework.util.Assert;
 import com.fdp.nonoo.service.RSAService;
 import com.fdp.nonoo.util.RSAUtils;
 
-@Service("rsaServiceImpl")
+@Service("rsaService")
 public class RSAServiceImpl implements RSAService {
 	private static final String privateKey = "privateKey";
 
@@ -25,18 +24,18 @@ public class RSAServiceImpl implements RSAService {
 		KeyPair keypair = RSAUtils.generateKeyPair();
 		RSAPublicKey publicKey = (RSAPublicKey) keypair
 				.getPublic();
-		RSAPrivateKey localRSAPrivateKey = (RSAPrivateKey) keypair
+		RSAPrivateKey rsaPrivateKey = (RSAPrivateKey) keypair
 				.getPrivate();
-		HttpSession localHttpSession = request.getSession();
-		localHttpSession.setAttribute(privateKey, localRSAPrivateKey);
+		HttpSession session = request.getSession();
+		session.setAttribute(privateKey, rsaPrivateKey);
 		return publicKey;
 	}
 
 	@Transactional(readOnly = true)
 	public void removePrivateKey(HttpServletRequest request) {
 		Assert.notNull(request);
-		HttpSession localHttpSession = request.getSession();
-		localHttpSession.removeAttribute(privateKey);
+		HttpSession session = request.getSession();
+		session.removeAttribute(privateKey);
 	}
 
 	@Transactional(readOnly = true)
@@ -44,11 +43,11 @@ public class RSAServiceImpl implements RSAService {
 		Assert.notNull(request);
 		if (password != null) {
 			HttpSession session = request.getSession();
-			RSAPrivateKey key = (RSAPrivateKey) session
-					.getAttribute(privateKey);
+			//RSAPrivateKey key = (RSAPrivateKey) session.getAttribute(privateKey);
 			String pass = request.getParameter(password);
-			if ((key != null) && (StringUtils.isNotEmpty(pass)))
-				return RSAUtils.decrypt(key, pass);
+			return pass;
+//			if ((key != null) && (StringUtils.isNotEmpty(pass)))
+//				return RSAUtils.decrypt(key, pass);
 		}
 		return null;
 	}

@@ -21,13 +21,13 @@ import com.fdp.nonoo.service.RSAService;
 
 public class AuthenticationFilter extends FormAuthenticationFilter {
 
-	private String enPassword = "enPassword";
+	private String enPassword = "password";
 	private String captchaId = "captchaId";
 	private String captcha = "captcha";
 
 	private String isRememberMe = "isRememberMe";
 
-	@Resource(name = "rsaServiceImpl")
+	@Resource(name = "rsaService")
 	private RSAService rsaService;
 
 	protected org.apache.shiro.authc.AuthenticationToken createToken(
@@ -38,8 +38,7 @@ public class AuthenticationFilter extends FormAuthenticationFilter {
 		String captcha = getCaptcha(servletRequest);
 		boolean isRememberMe = isRememberMe(servletRequest);
 		String host = getHost(servletRequest);
-		return new AuthenticationToken(username, password, captchaId, captcha,
-				isRememberMe, host);
+		return new AuthenticationToken(username, password, captchaId, captcha,isRememberMe, host);
 	}
 
 	protected boolean onAccessDenied(ServletRequest servletRequest,
@@ -66,8 +65,7 @@ public class AuthenticationFilter extends FormAuthenticationFilter {
 		Object attributeKey;
 		while (iterator.hasNext()) {
 			attributeKey = iterator.next();
-			attributeKeyMap.put(attributeKey,
-					session.getAttribute(attributeKey));
+			attributeKeyMap.put(attributeKey,session.getAttribute(attributeKey));
 		}
 		session.stop();
 		session = subject.getSession();

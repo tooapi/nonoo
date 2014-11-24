@@ -116,6 +116,29 @@
 		</property>
 	</bean>
 	
+	
+	<bean id="imageCaptchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
+		<property name="captchaEngine">
+			<bean class="com.fdp.nonoo.common.CaptchaEngine" />
+		</property>
+		<property name="minGuarantedStorageDelayInSeconds" value="3600" />
+	</bean>
+	
+	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="cacheSeconds" value="${message.cache_seconds}" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+		<property name="basenames">
+			<list>
+				<value>${message.path}</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
+		<property name="defaultLocale" value="${locale}" />
+	</bean>
 
 
 </beans>
