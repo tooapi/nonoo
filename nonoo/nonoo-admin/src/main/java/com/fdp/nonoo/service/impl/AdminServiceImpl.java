@@ -18,14 +18,14 @@ import com.fdp.nonoo.entity.Admin;
 import com.fdp.nonoo.entity.Role;
 import com.fdp.nonoo.service.AdminService;
 
-@Service("adminServiceImpl")
+@Service("adminService")
 public class AdminServiceImpl extends BaseServiceImpl<Admin, Long> implements
 		AdminService {
 
-	@Resource(name = "adminDaoImpl")
+	@Resource(name = "adminDao")
 	private AdminDao adminDao;
 
-	@Resource(name = "adminDaoImpl")
+	@Resource(name = "adminDao")
 	public void setBaseDao(AdminDao adminDao) {
 		super.setBaseDao(adminDao);
 	}

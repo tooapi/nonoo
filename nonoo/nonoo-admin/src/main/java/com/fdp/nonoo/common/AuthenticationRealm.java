@@ -31,7 +31,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
 	@Resource(name = "captchaService")
 	private CaptchaService captchaService;
 
-	@Resource(name = "adminServiceImpl")
+	@Resource(name = "adminService")
 	private AdminService adminService;
 
 	protected AuthenticationInfo doGetAuthenticationInfo(
@@ -56,12 +56,12 @@ public class AuthenticationRealm extends AuthorizingRealm {
 			if (!admin.getIsEnabled()) {
 				throw new DisabledAccountException();
 			}
-			Setting localSetting = SettingUtils.get();
+			Setting setting = SettingUtils.get();
 			int i;
 			if (admin.getIsLocked()) {
-				if (ArrayUtils.contains(localSetting.getAccountLockTypes(),
+				if (ArrayUtils.contains(setting.getAccountLockTypes(),
 						Setting.AccountLockType.admin)) {
-					i = localSetting.getAccountLockTime();
+					i = setting.getAccountLockTime();
 					if (i == 0) {
 						throw new LockedAccountException();
 					}
@@ -81,9 +81,9 @@ public class AuthenticationRealm extends AuthorizingRealm {
 				admin.setLockedDate(null);
 				adminService.update(admin);
 			}
-			if (!DigestUtils.md5Hex(password).equals(admin.getPassword())) {
+			if (!password.equals(admin.getPassword())) {
 				i = admin.getLoginFailureCount() + 1;
-				if (i >= localSetting.getAccountLockCount()) {
+				if (i >= setting.getAccountLockCount()) {
 					admin.setIsLocked(true);
 					admin.setLockedDate(new Date());
 				}
@@ -104,8 +104,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
 
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
-		Principal principal = (Principal) principals.fromRealm(getName())
-				.iterator().next();
+		Principal principal = (Principal) principals.fromRealm(getName()).iterator().next();
 		if (principal != null) {
 			List<String> authorityList = adminService.findAuthorities(principal
 					.getId());

@@ -19,20 +19,20 @@ public class CaptchaServiceImpl implements CaptchaService {
 	private com.octo.captcha.service.CaptchaService imageCaptchaService;
 
 	public BufferedImage buildImage(String captchaId) {
-		return (BufferedImage) this.imageCaptchaService
-				.getChallengeForID(captchaId);
+		return (BufferedImage) imageCaptchaService.getChallengeForID(captchaId);
 	}
 
 	public boolean isValid(Setting.CaptchaType captchaType, String captchaId,
 			String captcha) {
+		System.out.println("captchaId"+captchaId);
+		System.out.println("captcha"+captcha);
 		Setting setting = SettingUtils.get();
-		if ((captchaType == null)
-				|| (ArrayUtils.contains(setting.getCaptchaTypes(), captchaType))) {
-			if ((StringUtils.isNotEmpty(captchaId))
-					&& (StringUtils.isNotEmpty(captcha))) {
+		if ((captchaType == null)|| (ArrayUtils.contains(setting.getCaptchaTypes(), captchaType))) {
+			if ((StringUtils.isNotEmpty(captchaId))&& (StringUtils.isNotEmpty(captcha))) {
 				try {
-					return this.imageCaptchaService.validateResponseForID(captchaId, captcha.toUpperCase());
+					return imageCaptchaService.validateResponseForID(captchaId, captcha.toUpperCase());
 				} catch (Exception e) {
+					e.printStackTrace();
 					return false;
 				}
 			}

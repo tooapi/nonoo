@@ -145,7 +145,7 @@
 				</div>
 				<div class="panel-body">
 					<form name="loginForm" action="login.jsp" method="post">
-
+                        <input type="hidden" name="captchaId" value="<%=captchaId%>" />
 						<div class="form-group">
 							<label class="control-label">用户名：</label> <input type="text"
 								class="form-control input-lg  " name="username" id="username"

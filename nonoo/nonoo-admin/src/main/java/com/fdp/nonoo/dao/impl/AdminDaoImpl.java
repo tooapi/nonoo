@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.fdp.nonoo.dao.AdminDao;
 import com.fdp.nonoo.entity.Admin;
 
-@Repository("adminDaoImpl")
+@Repository("adminDao")
 public class AdminDaoImpl extends BaseDaoImpl<Admin, Long> implements AdminDao {
 	public boolean usernameExists(String username) {
 		if (username == null)

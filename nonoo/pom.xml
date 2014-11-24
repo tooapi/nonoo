@@ -30,6 +30,14 @@
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+
+			<!-- Junit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
 			<!-- Common libs -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -227,10 +235,13 @@
 
 			<!-- Jcaptcha -->
 			<dependency>
-				<groupId>com.octo.jcaptcha</groupId>
-				<artifactId>jcaptcha</artifactId>
-				<version>1.0</version>
+				<groupId>com.octo.captcha</groupId>
+				<artifactId>jcaptcha-all</artifactId>
+				<version>1.0-RC5</version>
 			</dependency>
+
+
+
 			<!-- jsoup -->
 			<dependency>
 				<groupId>org.jsoup</groupId>
