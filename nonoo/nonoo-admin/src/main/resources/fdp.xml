@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://fdp.org/fdp.xsd"> 
+<fdp > 
 	<setting name="siteName" value="FDP++商城"/>  
 	<setting name="siteUrl" value="http://localhost:8080/fdp"/>  
 	<setting name="logo" value="/fdp/upload/image/logo.gif"/>  
