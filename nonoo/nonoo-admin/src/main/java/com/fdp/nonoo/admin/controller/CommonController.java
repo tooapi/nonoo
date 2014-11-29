@@ -33,8 +33,6 @@ public class CommonController implements ServletContextAware {
 	@Value("${system.description}")
 	private String systemDescription;
 
-	
-
 	@Resource(name = "captchaService")
 	private CaptchaService captchaService;
 
@@ -46,7 +44,7 @@ public class CommonController implements ServletContextAware {
 
 	@RequestMapping(value = { "/main" }, method = { RequestMethod.GET })
 	public String main() {
-		return "/admin/common/main";
+		return "/common/main";
 	}
 
 	@RequestMapping(value = { "/index" }, method = { RequestMethod.GET })
@@ -60,9 +58,8 @@ public class CommonController implements ServletContextAware {
 		model.addAttribute("osName", System.getProperty("os.name"));
 		model.addAttribute("osArch", System.getProperty("os.arch"));
 		model.addAttribute("serverInfo", this.servletContext.getServerInfo());
-		model.addAttribute("servletVersion", servletContext.getMajorVersion()
-				+ "." + servletContext.getMinorVersion());
-		return "/admin/common/index";
+		model.addAttribute("servletVersion", servletContext.getMajorVersion()+ "." + servletContext.getMinorVersion());
+		return "/common/index";
 	}
 
 	@RequestMapping(value = { "/captcha" }, method = { RequestMethod.GET })

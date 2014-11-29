@@ -1,11 +1,9 @@
-<%@page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="com.fdp.nonoo.common.Setting"%>
 <%@page import="com.fdp.nonoo.util.SettingUtils"%>
 <%@page import="com.fdp.nonoo.util.SpringUtils"%>
-<%@page
-	import="org.apache.shiro.web.filter.authc.FormAuthenticationFilter"%>
+<%@page import="org.apache.shiro.web.filter.authc.FormAuthenticationFilter"%>
 <%@page import="java.util.UUID"%>
 <%@page import="com.fdp.nonoo.common.Setting.AccountLockType"%>
 <%@page import="org.apache.commons.lang.ArrayUtils"%>
@@ -19,10 +17,6 @@
 	String captchaId = UUID.randomUUID().toString();
 	ApplicationContext applicationContext = SpringUtils.getApplicationContext();
 	Setting setting = SettingUtils.get();
-	
-	
-	
-
 	String message = null;
 	String loginFailure = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
 	if (loginFailure != null) {
@@ -44,20 +38,13 @@
 			message = "admin.login.authentication";
 		}
 	}
-	
 	System.out.println(message);
 	if (applicationContext != null) {
 %>
-<shiro:authenticated>
-	<%
-		response.sendRedirect(base + "/admin/common/main.jhtml");
-	%>
-</shiro:authenticated>
-<%
-	}
-%>
-
-
+		<shiro:authenticated>
+		<%response.sendRedirect(base + "/common/main.jhtml");%>
+		</shiro:authenticated>
+<%}%>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -65,49 +52,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<script type="text/javascript">
-	$().ready( function() {
-		
-		var $loginForm = $("#loginForm");
-		var $username = $("#username");
-		var $password = $("#password");
-		var $captcha = $("#captcha");
-		var $captchaImage = $("#captchaImage");
-		var $isRememberUsername = $("#isRememberUsername");
-		
-		
-		// 更换验证码
-		$captchaImage.click( function() {
-			$captchaImage.attr("src", "<%=base%>/common/captcha.jhtml?captchaId=<%=captchaId%>&timestamp=" + (new Date()).valueOf());
-		});
-		
-		// 表单验证、记住用户名
-		$loginForm.submit( function() {
-			if ($username.val() == "") {
-				$.message("warn", "<%=SpringUtils.getMessage("admin.login.usernameRequired")%>");
-				return false;
-			}
-			if ($password.val() == "") {
-				$.message("warn", "<%=SpringUtils.getMessage("admin.login.passwordRequired")%>");
-				return false;
-			}
-			if ($captcha.val() == "") {
-				$.message("warn", "<%=SpringUtils.getMessage("admin.login.captchaRequired")%>");
-				return false;
-			}
-			
-			if ($isRememberUsername.prop("checked")) {
-				addCookie("adminUsername", $username.val(), {expires: 7 * 24 * 60 * 60});
-			} else {
-				removeCookie("adminUsername");
-			}
-			
-		});
-		
-		
-	});
-</script>
 <title>登陆页面</title>
 </head>
 <body>
@@ -134,8 +78,6 @@
 	</header>
 
 	<!-- /header -->
-
-
 	<div class="container">
 
 		<div class="row">
@@ -162,10 +104,10 @@
 							 <div class="row">
 							 
 								<div class="col-xs-6 ">
-								   <input type="text" id="captcha" class="form-control input-lg" placeholder="验证码" name='captcha' autocomplete="off" />
+								   <input type="text" id="captcha" class="form-control input-lg" placeholder="" name='captcha' autocomplete="off" />
 								   </div>
 							    <div class="col-xs-6 ">
-							       <img src="<%=base%>/common/captcha.jhtml?captchaId=<%=captchaId%>" />
+							       <img id="captchaImage" class="captchaImage" src="<%=base%>/common/captcha.jhtml?captchaId=<%=captchaId%>" />
 							    </div>
 							</div>
 						</div>
@@ -187,6 +129,50 @@
 		</div>
 	</div>
 
-	<script src="resources/jquery/jquery.min.js"></script>
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="${base}resources/jquery/jquery.min.js"></script>
+<script src="${base}resources/jquery/jquery.cookie.js"></script>
+<script src="${base}resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$().ready( function() {
+		
+		var $loginForm = $("#loginForm");
+		var $enPassword = $("#enPassword");
+		var $username = $("#username");
+		var $password = $("#password");
+		var $captcha = $("#captcha");
+		var $captchaImage = $("#captchaImage");
+		var $isRememberMe = $("#isRememberMe");
+		
+		
+		// 记住用户名
+		 var adminUsername=$.cookie("adminUsername");
+		if(adminUsername != null) {
+			$isRememberMe.prop("checked", true);
+			$username.val(adminUsername);
+			$password.focus();
+		} else {
+			$isRememberMe.prop("checked", false);
+			$username.focus();
+		}
+		
+		// 更换验证码
+		$captchaImage.click( function() {
+			$captchaImage.attr("src", "<%=base%>/common/captcha.jhtml?captchaId=<%=captchaId%>&timestamp=" + (new Date()).valueOf());
+		});
+		
+		// 表单验证、记住用户名
+		$loginForm.submit( function() {
+			
+			
+			if ($isRememberMe.prop("checked")) {
+				$.cookie("adminUsername", $username.val(), {expires: 7 * 24 * 60 * 60});
+			} else {
+				$.cookie("adminUsername","",{expires: -1});
+			}
+			
+		});
+		
+		
+	});
+</script>
 </body>

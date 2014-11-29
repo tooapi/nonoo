@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>Nonoo-admin 后台管理系统</title>
+[#include  "/includes/top.jhtml" /]
+</head>
+<body>
+[#include  "/includes/header.jhtml" /]

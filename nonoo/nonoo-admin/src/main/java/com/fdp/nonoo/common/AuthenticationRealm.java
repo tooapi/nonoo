@@ -44,7 +44,6 @@ public class AuthenticationRealm extends AuthorizingRealm {
 		if (!captchaService.isValid(Setting.CaptchaType.adminLogin, captchaId,captcha)) {
 			throw new UnsupportedTokenException();
 		}
-        System.out.println("admin.... passwords");
 		if ((username != null) && (password != null)) {
 
 			Admin admin = adminService.findByUsername(username);
@@ -57,8 +56,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
 			Setting setting = SettingUtils.get();
 			int i;
 			if (admin.getIsLocked()) {
-				if (ArrayUtils.contains(setting.getAccountLockTypes(),
-						Setting.AccountLockType.admin)) {
+				if (ArrayUtils.contains(setting.getAccountLockTypes(),Setting.AccountLockType.admin)) {
 					i = setting.getAccountLockTime();
 					if (i == 0) {
 						throw new LockedAccountException();
@@ -70,7 +68,6 @@ public class AuthenticationRealm extends AuthorizingRealm {
 						admin.setIsLocked((false));
 						admin.setLockedDate(null);
 						adminService.update(admin);
-
 					}
 					throw new LockedAccountException();
 				}
@@ -100,11 +97,10 @@ public class AuthenticationRealm extends AuthorizingRealm {
 	}
 
 	protected AuthorizationInfo doGetAuthorizationInfo( PrincipalCollection principals) {
-		System.out.println("principals"+principals);
+		
 		Principal principal = (Principal) principals.fromRealm(getName()).iterator().next();
 		if (principal != null) {
 			List<String> authorities= adminService.findAuthorities(principal.getId());
-			System.out.println("authorities"+authorities);
 			if (authorities != null) {
 				SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 				authorizationInfo.addStringPermissions(authorities);

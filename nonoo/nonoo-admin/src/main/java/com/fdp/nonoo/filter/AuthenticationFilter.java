@@ -24,7 +24,6 @@ public class AuthenticationFilter extends FormAuthenticationFilter {
 	private String enPassword = "password";
 	private String captchaId = "captchaId";
 	private String captcha = "captcha";
-
 	private String isRememberMe = "isRememberMe";
 
 	@Resource(name = "rsaService")

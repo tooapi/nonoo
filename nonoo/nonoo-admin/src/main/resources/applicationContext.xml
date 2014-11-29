@@ -107,6 +107,7 @@
 				<prop key="date_format">${template.date_format}</prop>
 				<prop key="time_format">${template.time_format}</prop>
 				<prop key="object_wrapper">freemarker.ext.beans.BeansWrapper</prop>
+				<prop key="auto_import">/common/spring.ftl as spring</prop>
 			</props>
 		</property>
 		<property name="freemarkerVariables">
