@@ -24,8 +24,7 @@ public class CaptchaServiceImpl implements CaptchaService {
 
 	public boolean isValid(Setting.CaptchaType captchaType, String captchaId,
 			String captcha) {
-		System.out.println("captchaId"+captchaId);
-		System.out.println("captcha"+captcha);
+		
 		Setting setting = SettingUtils.get();
 		if ((captchaType == null)|| (ArrayUtils.contains(setting.getCaptchaTypes(), captchaType))) {
 			if ((StringUtils.isNotEmpty(captchaId))&& (StringUtils.isNotEmpty(captcha))) {

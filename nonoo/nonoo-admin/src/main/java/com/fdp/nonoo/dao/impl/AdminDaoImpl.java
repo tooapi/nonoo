@@ -14,9 +14,7 @@ public class AdminDaoImpl extends BaseDaoImpl<Admin, Long> implements AdminDao {
 		if (username == null)
 			return false;
 		String sql = "select count(*) from Admin admin where lower(admin.username) = lower(:username)";
-		Long count = (Long) entityManager.createQuery(sql, Long.class)
-				.setFlushMode(FlushModeType.COMMIT)
-				.setParameter("username", username).getSingleResult();
+		Long count = (Long) entityManager.createQuery(sql, Long.class).setFlushMode(FlushModeType.COMMIT).setParameter("username", username).getSingleResult();
 		return count > 0L;
 	}
 
@@ -25,9 +23,7 @@ public class AdminDaoImpl extends BaseDaoImpl<Admin, Long> implements AdminDao {
 			return null;
 		try {
 			String sql = "select admin from Admin admin where lower(admin.username) = lower(:username)";
-			return (Admin) entityManager.createQuery(sql, Admin.class)
-					.setFlushMode(FlushModeType.COMMIT)
-					.setParameter("username", username).getSingleResult();
+			return (Admin) entityManager.createQuery(sql, Admin.class).setFlushMode(FlushModeType.COMMIT).setParameter("username", username).getSingleResult();
 		} catch (NoResultException e) {
 			e.printStackTrace();
 		}

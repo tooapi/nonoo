@@ -33,8 +33,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
 	@Resource(name = "adminService")
 	private AdminService adminService;
 
-	protected AuthenticationInfo doGetAuthenticationInfo(
-			org.apache.shiro.authc.AuthenticationToken token)
+	protected AuthenticationInfo doGetAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken token)
 			throws AuthenticationException {
 		AuthenticationToken authToken = (AuthenticationToken) token;
 		String username = authToken.getUsername();
@@ -45,7 +44,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
 		if (!captchaService.isValid(Setting.CaptchaType.adminLogin, captchaId,captcha)) {
 			throw new UnsupportedTokenException();
 		}
-
+        System.out.println("admin.... passwords");
 		if ((username != null) && (password != null)) {
 
 			Admin admin = adminService.findByUsername(username);
@@ -94,22 +93,21 @@ public class AuthenticationRealm extends AuthorizingRealm {
 			admin.setLoginDate(new Date());
 			admin.setLoginFailureCount(0);
 			adminService.update(admin);
-			return new SimpleAuthenticationInfo(new Principal(admin.getId(),
-					username), password, getName());
+			return new SimpleAuthenticationInfo(new Principal(admin.getId(),username), password, getName());
 		} else {
 			throw new UnknownAccountException();
 		}
 	}
 
-	protected AuthorizationInfo doGetAuthorizationInfo(
-			PrincipalCollection principals) {
+	protected AuthorizationInfo doGetAuthorizationInfo( PrincipalCollection principals) {
+		System.out.println("principals"+principals);
 		Principal principal = (Principal) principals.fromRealm(getName()).iterator().next();
 		if (principal != null) {
-			List<String> authorityList = adminService.findAuthorities(principal
-					.getId());
-			if (authorityList != null) {
+			List<String> authorities= adminService.findAuthorities(principal.getId());
+			System.out.println("authorities"+authorities);
+			if (authorities != null) {
 				SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-				authorizationInfo.addStringPermissions(authorityList);
+				authorizationInfo.addStringPermissions(authorities);
 				return authorizationInfo;
 			}
 		}

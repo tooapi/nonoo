@@ -28,16 +28,16 @@ public class CacheServiceImpl implements CacheService {
 	private FreeMarkerConfigurer freeMarkerConfigurer;
 
 	public String getDiskStorePath() {
-		return this.ehCacheManager.getConfiguration()
+		return ehCacheManager.getConfiguration()
 				.getDiskStoreConfiguration().getPath();
 	}
 
 	public int getCacheSize() {
 		int i = 0;
-		String[] cacheNames = this.ehCacheManager.getCacheNames();
+		String[] cacheNames = ehCacheManager.getCacheNames();
 		if (cacheNames != null)
 			for (String cacheName : cacheNames) {
-				Ehcache ehcache = this.ehCacheManager.getEhcache(cacheName);
+				Ehcache ehcache = ehCacheManager.getEhcache(cacheName);
 				if (ehcache == null)
 					continue;
 				i += ehcache.getSize();
@@ -51,13 +51,12 @@ public class CacheServiceImpl implements CacheService {
 			"articleCategory", "product", "productCategory", "review",
 			"consultation", "promotion" }, allEntries = true)
 	public void clear() {
-		this.messageSource.clearCache();
+		messageSource.clearCache();
 		try {
-			this.freeMarkerConfigurer.getConfiguration().setSharedVariable(
-					"setting", SettingUtils.get());
+			freeMarkerConfigurer.getConfiguration().setSharedVariable("setting", SettingUtils.get());
 		} catch (TemplateModelException e) {
 			e.printStackTrace();
 		}
-		this.freeMarkerConfigurer.getConfiguration().clearTemplateCache();
+		freeMarkerConfigurer.getConfiguration().clearTemplateCache();
 	}
 }

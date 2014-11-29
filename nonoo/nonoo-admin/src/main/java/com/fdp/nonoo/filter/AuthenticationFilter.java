@@ -72,8 +72,7 @@ public class AuthenticationFilter extends FormAuthenticationFilter {
 		for (Map.Entry<Object, Object> entry : attributeKeyMap.entrySet()) {
 			session.setAttribute(entry.getKey(), entry.getValue());
 		}
-		return super.onLoginSuccess(token, subject, servletRequest,
-				servletResponse);
+		return super.onLoginSuccess(token, subject, servletRequest,servletResponse);
 	}
 
 	protected String getPassword(ServletRequest servletRequest) {

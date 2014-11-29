@@ -43,12 +43,12 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin, Long> implements
 	@Transactional(readOnly = true)
 	public List<String> findAuthorities(Long id) {
 		List<String> authorities = new ArrayList<String>();
-		Admin localAdmin = (Admin) adminDao.find(id);
-		if (localAdmin != null) {
-			Iterator<Role> localIterator = localAdmin.getRoles().iterator();
-			while (localIterator.hasNext()) {
-				Role localRole = (Role) localIterator.next();
-				authorities.addAll(localRole.getAuthorities());
+		Admin admin = (Admin) adminDao.find(id);
+		if (admin != null) {
+			Iterator<Role> iterator = admin.getRoles().iterator();
+			while (iterator.hasNext()) {
+				Role role = (Role) iterator.next();
+				authorities.addAll(role.getAuthorities());
 			}
 		}
 		return authorities;
@@ -56,30 +56,30 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin, Long> implements
 
 	@Transactional(readOnly = true)
 	public boolean isAuthenticated() {
-		Subject localSubject = SecurityUtils.getSubject();
-		if (localSubject != null)
-			return localSubject.isAuthenticated();
+		Subject subject = SecurityUtils.getSubject();
+		if (subject != null)
+			return subject.isAuthenticated();
 		return false;
 	}
 
 	@Transactional(readOnly = true)
 	public Admin getCurrent() {
-		Subject localSubject = SecurityUtils.getSubject();
-		if (localSubject != null) {
-			Principal localPrincipal = (Principal) localSubject.getPrincipal();
-			if (localPrincipal != null)
-				return (Admin) adminDao.find(localPrincipal.getId());
+		Subject subject = SecurityUtils.getSubject();
+		if (subject != null) {
+			Principal principal = (Principal) subject.getPrincipal();
+			if (principal != null)
+				return (Admin) adminDao.find(principal.getId());
 		}
 		return null;
 	}
 
 	@Transactional(readOnly = true)
 	public String getCurrentUsername() {
-		Subject localSubject = SecurityUtils.getSubject();
-		if (localSubject != null) {
-			Principal localPrincipal = (Principal) localSubject.getPrincipal();
-			if (localPrincipal != null)
-				return localPrincipal.getUsername();
+		Subject subject = SecurityUtils.getSubject();
+		if (subject != null) {
+			Principal principal = (Principal) subject.getPrincipal();
+			if (principal != null)
+				return principal.getUsername();
 		}
 		return null;
 	}

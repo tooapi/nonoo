@@ -42,7 +42,7 @@ public class RSAServiceImpl implements RSAService {
 	public String decryptParameter(String password, HttpServletRequest request) {
 		Assert.notNull(request);
 		if (password != null) {
-			HttpSession session = request.getSession();
+			//HttpSession session = request.getSession();
 			//RSAPrivateKey key = (RSAPrivateKey) session.getAttribute(privateKey);
 			String pass = request.getParameter(password);
 			return pass;
