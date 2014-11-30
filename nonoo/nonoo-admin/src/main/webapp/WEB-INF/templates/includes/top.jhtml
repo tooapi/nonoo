@@ -8,3 +8,11 @@
         <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
         <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
+
+
+
+
+
+
+  <!-- datatables -->
+ <link rel="stylesheet" href="${base}/resources/lib/datatables/extras/TableTools/media/css/TableTools.css">

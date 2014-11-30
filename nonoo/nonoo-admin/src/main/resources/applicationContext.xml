@@ -107,12 +107,19 @@
 				<prop key="date_format">${template.date_format}</prop>
 				<prop key="time_format">${template.time_format}</prop>
 				<prop key="object_wrapper">freemarker.ext.beans.BeansWrapper</prop>
-				<prop key="auto_import">/common/spring.ftl as spring</prop>
+				<prop key="auto_import">/includes/spring.ftl as spring</prop>
 			</props>
 		</property>
 		<property name="freemarkerVariables">
 			<map>
 				<entry key="base" value="#{servletContext.contextPath}" />
+				<entry key="base" value="#{servletContext.contextPath}" />
+				<entry key="locale" value="${locale}" />
+				<entry key="setting" value="#{T(com.fdp.nonoo.util.SettingUtils).get()}" />
+				<entry key="message" value-ref="messageMethod" />
+				
+				
+				<entry key="pagination" value-ref="paginationDirective" />
 			</map>
 		</property>
 	</bean>

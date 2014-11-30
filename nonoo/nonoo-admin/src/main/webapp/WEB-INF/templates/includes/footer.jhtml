@@ -1,0 +1,23 @@
+<footer class="footer">
+	<div class="container">
+		 <div class="row">
+		 	  © 2014 noo.com &nbsp; 京ICP备13017353号-3 &nbsp; 京公网安备11010802012357号
+      </div>
+	</div>
+</footer>
+<script src="${base}/resources/jquery/jquery.min.js"></script>
+<script src="${base}/resources/jquery/jquery.cookie.js"></script>
+<script src="${base}/resources/bootstrap/js/bootstrap.min.js"></script>
+
+
+
+
+
+  <!-- datatable -->
+	<script src="${base}/resources/lib/datatables/jquery.dataTables.min.js"></script>
+	<script src="${base}/resources/lib/datatables/extras/Scroller/media/js/dataTables.scroller.min.js"></script>
+	<!-- datatable table tools -->
+    <script src="${base}/resources/lib/datatables/extras/TableTools/media/js/TableTools.min.js"></script>
+    <script src="${base}/resources/lib/datatables/extras/TableTools/media/js/ZeroClipboard.js"></script>
+    <!-- datatables bootstrap integration -->
+    <script src="${base}/resources/lib/datatables/jquery.dataTables.bootstrap.min.js"></script>

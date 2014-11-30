@@ -6,3 +6,36 @@
 </head>
 <body>
 [#include  "/includes/header.jhtml" /]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[#include "/includes/footer.jhtml" /]
+</body>

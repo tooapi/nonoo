@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>地区管理</title> [#include "/includes/top.jhtml" /]
+</head>
+<body>
+
+	[#include "/includes/header.jhtml" /]
+
+
+	<div class="body"></div>
+
+	<div class="container">
+
+		<div>
+			<ol class="breadcrumb">
+				<li><a href='http://www.nonoo.net/'>系统管理</a></li>
+				<li><a href='/plus/list.php?tid=1'>地区设置</a></li>
+				<li>地区列表</li>
+			</ol>
+		</div>
+
+		<div class="row">
+
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+
+					<form class="form-inline  " action="list.jhtml" method="get">
+						机构名称： <input type="text" name="rolename" id="rolename"
+							class="form-control " placeholder="" value="">&nbsp;&nbsp;
+						<button type="submit" class="btn  btn-primary">查询</button>
+						&nbsp;&nbsp;
+						<button type="button" class="btn  btn-success" id="addnew">新增机构</button>
+					</form>
+
+				</div>
+
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<table class="table table-striped table-condensed" id="dt_b">
+						<thead>
+							<tr>
+								<th class="check"><input type="checkbox" id="selectAll" />
+								</th>
+								<th>${message("Admin.username")}</th>
+								<th>${message("Admin.email")}</th>
+								<th>${message("Admin.name")}</th>
+								<th>${message("Admin.department")}</th>
+								<th>${message("Admin.loginDate")}</th>
+								<th>${message("Admin.loginIp")}</th>
+								<th><span>${message("admin.admin.status")}</span></th>
+								<th>${message("admin.common.createDate")}</th>
+								<th><span>${message("admin.common.handle")}</span></th>
+							</tr>
+						</thead>
+						<tbody>
+			              [#list page.content as admin]
+				              <tr>
+					             <td><input type="checkbox" name="ids" value="${admin.id}" /></td>
+					             <td>${admin.username}</td>
+					             <td>${admin.email}</td>
+					             <td>${admin.name}</td>
+					             <td>${admin.department}</td>
+					             <td>
+									[#if admin.loginDate??]
+										<span title="${admin.loginDate?string("yyyy-MM-dd HH:mm:ss")}">${admin.loginDate}</span>
+									[#else]
+							-      [/#if]
+					             </td>
+					             <td>${(admin.loginIp)!"-"}</td>
+					             <td>
+									[#if !admin.isEnabled]
+										<span class="red">${message("admin.admin.disabled")}</span>
+									[#elseif admin.isLocked]
+										<span class="red"> ${message("admin.admin.locked")} </span>
+									[#else]
+										<span class="green">${message("admin.admin.normal")}</span>
+									[/#if]
+					             </td>
+					             <td><span title="${admin.createDate?string("yyyy-MM-dd HH:mm:ss")}">${admin.createDate}</span></td>
+					             <td><a href="edit.jhtml?id=${admin.id}">[${message("admin.common.edit")}]</a></td>
+				              </tr>
+			               [/#list]
+						</tbody>
+						<tfoot>
+					    	[@pagination pageNumber = page.pageNumber totalPages = page.totalPages]
+			                        [#include "/includes/pagination.ftl"]
+	                    	[/@pagination]
+						</tfoot>
+					</table>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	[#include "/includes/footer.jhtml" /]
+</body>

@@ -1,6 +1,7 @@
+
 <header id="header">
-  <nav class="navbar navbar-inverse navbar-fixed-top" >
-  <div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top" >
+<div class="container">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" >
       <span class="sr-only">Toggle navigation</span>
@@ -8,15 +9,43 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Nonoo 后台管理</a>
+    <a class="navbar-brand" href="#">Nonoo-admin 后台管理系统</a>
   </div>
-  <div class="collapse navbar-collapse" >
-  
-    <ul class="nav navbar-nav navbar-right">
-     
-    </ul>
-    
+  <div class="navbar-inner">
+	  <div class="container">				
+         <div class="collapse navbar-collapse" >
+	      <ul  class="nav navbar-nav">  
+	          <li class="dropdown"> 
+	               <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-list-alt"></span>系统管理<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+					    <li><a href="${base}/admin/list.jhtml">管理员设置</a></li>
+						<li><a href="${base}/area/list.jhtml">地区设置</a></li>
+						<li><a href="index.php?uid=1&amp;page=form_extended">Extended form elements</a></li>
+						<li><a href="index.php?uid=1&amp;page=form_validation">Form Validation</a></li>
+					</ul>
+			</li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	       <li id="headerInfo" class="dropdown header">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 10px;padding-bottom:5px;" >
+	                <img src="${base}/resources/images/default/head.jpg" class="tool_head_img">
+	                <span id="headerUsername" >系统管理员</span> <span class="caret"></span>
+	          </a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">个人资料</a></li>
+	            <li><a href="${base}/logout.jhtml">退出</a></li>
+	            <li class="divider"></li>
+	            <li>
+	              <a href="${base}/register.jhtml">
+	                <span class="glyphicon glyphicon-cog"></span> 系统设置
+	              </a>
+	            </li>
+	          </ul>
+	        </li>
+	       </ul>
+        </div>
+    </div>
   </div>
-  </div>
+</div>
 </nav>
 </header>

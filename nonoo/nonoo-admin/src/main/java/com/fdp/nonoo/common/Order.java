@@ -49,10 +49,9 @@ public class Order implements Serializable {
 			return false;
 		if (this == obj)
 			return true;
-		Order localOrder = (Order) obj;
-		return new EqualsBuilder()
-				.append(getProperty(), localOrder.getProperty())
-				.append(getDirection(), localOrder.getDirection()).isEquals();
+		Order order = (Order) obj;
+		return new EqualsBuilder().append(getProperty(), order.getProperty())
+				.append(getDirection(), order.getDirection()).isEquals();
 	}
 
 	public int hashCode() {

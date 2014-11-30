@@ -90,13 +90,12 @@
                         <input type="hidden" name="captchaId" value="<%=captchaId%>" />
 						<div class="form-group">
 							<label class="control-label">用户名：</label> <input type="text"
-								class="form-control input-lg  " name="username" id="username"
-								placeholder="" required autofocus>
+								class="form-control input-lg  " name="username" id="username" value="admin" placeholder="" required autofocus>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label">密&nbsp;&nbsp;码：</label> 
-							<input type="password" class="form-control input-lg" name="password" id="password" placeholder="" required>
+							<input type="password" class="form-control input-lg" name="password" id="password" placeholder="" value="admin" required>
 						</div>
 
 						<div class='form-group'>
@@ -113,9 +112,7 @@
 						</div>
 
 						<div class="checkbox">
-							<label> <input name="isRememberMe" id="isRememberMe"
-								type="checkbox">下次自动登录
-							</label>
+							<label> <input name="isRememberMe" id="isRememberMe" type="checkbox">下次自动登录 </label>
 						</div>
 
 
