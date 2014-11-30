@@ -9,7 +9,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 public class Pageable implements Serializable {
 	private static final long serialVersionUID = -3930180379790344299L;
 	private static final int DEFAULT_PAGE_NUMBER = 1;
-	private static final int DEFAULT_PAGE_SIZE = 20;
+	private static final int DEFAULT_PAGE_SIZE = 10;
 	private static final int MAX_PAGE_SIZE = 1000;
 	private int pageNumber = DEFAULT_PAGE_NUMBER;
 	private int pageSize = DEFAULT_PAGE_SIZE;
@@ -108,16 +108,16 @@ public class Pageable implements Serializable {
 			return false;
 		if (this == obj)
 			return true;
-		Pageable localPageable = (Pageable) obj;
+		Pageable pageable = (Pageable) obj;
 		return new EqualsBuilder()
-				.append(getPageNumber(), localPageable.getPageNumber())
-				.append(getPageSize(), localPageable.getPageSize())
-				.append(getSearchProperty(), localPageable.getSearchProperty())
-				.append(getSearchValue(), localPageable.getSearchValue())
-				.append(getOrderProperty(), localPageable.getOrderProperty())
-				.append(getOrderDirection(), localPageable.getOrderDirection())
-				.append(getFilters(), localPageable.getFilters())
-				.append(getOrders(), localPageable.getOrders()).isEquals();
+				.append(getPageNumber(), pageable.getPageNumber())
+				.append(getPageSize(), pageable.getPageSize())
+				.append(getSearchProperty(), pageable.getSearchProperty())
+				.append(getSearchValue(), pageable.getSearchValue())
+				.append(getOrderProperty(), pageable.getOrderProperty())
+				.append(getOrderDirection(), pageable.getOrderDirection())
+				.append(getFilters(), pageable.getFilters())
+				.append(getOrders(), pageable.getOrders()).isEquals();
 	}
 
 	public int hashCode() {

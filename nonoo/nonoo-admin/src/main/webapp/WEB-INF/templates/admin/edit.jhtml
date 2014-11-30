@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>地区管理</title> [#include "/includes/top.jhtml" /]
+</head>
+<body>
+
+	[#include "/includes/header.jhtml" /]
+
+
+	<div class="body"></div>
+
+	<div class="container">
+
+		<div>
+			<ol class="breadcrumb">
+				<li><a href='http://www.nonoo.net/'>系统管理</a></li>
+				<li><a href='/plus/list.php?tid=1'>地区设置</a></li>
+				<li>地区列表</li>
+			</ol>
+		</div>
+
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<form id="inputForm" action="update.jhtml" method="post">
+		<input type="hidden" name="id" value="${admin.id}" />
+		<ul id="tab" class="tab">
+			<li>
+				<input type="button" value="${message("admin.admin.base")}" />
+			</li>
+			<li>
+				<input type="button" value="${message("admin.admin.profile")}" />
+			</li>
+		</ul>
+		<table class="input tabContent">
+			<tr>
+				<th>
+					${message("Admin.username")}:
+				</th>
+				<td>
+					${admin.username}
+				</td>
+			</tr>
+			<tr>
+				<th>
+					${message("Admin.password")}:
+				</th>
+				<td>
+					<input type="password" id="password" name="password" class="text" maxlength="20" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					${message("admin.admin.rePassword")}:
+				</th>
+				<td>
+					<input type="password" name="rePassword" class="text" maxlength="20" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>${message("Admin.email")}:
+				</th>
+				<td>
+					<input type="text" name="email" class="text" value="${admin.email}" maxlength="200" />
+				</td>
+			</tr>
+			<tr class="roles">
+				<th>
+					<span class="requiredField">*</span>${message("Admin.roles")}:
+				</th>
+				<td>
+					<span class="fieldSet">
+						[#list roles as role]
+							<label>
+								<input type="checkbox" name="roleIds" value="${role.id}"[#if admin.roles?seq_contains(role)] checked="checked"[/#if] />${role.name}
+							</label>
+						[/#list]
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					${message("admin.common.setting")}:
+				</th>
+				<td>
+					<label>
+						<input type="checkbox" name="isEnabled" value="true"[#if admin.isEnabled] checked="checked"[/#if] />${message("Admin.isEnabled")}
+						<input type="hidden" name="_isEnabled" value="false" />
+					</label>
+					[#if admin.isLocked]
+						<label>
+							<input type="checkbox" name="isLocked" value="true" checked="checked" />${message("Admin.isLocked")}
+							<input type="hidden" name="_isLocked" value="false" />
+						</label>
+					[/#if]
+				</td>
+			</tr>
+		</table>
+		<table class="input tabContent">
+			<tr>
+				<th>
+					${message("Admin.department")}:
+				</th>
+				<td>
+					<input type="text" name="department" class="text" value="${admin.department}" maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					${message("Admin.name")}:
+				</th>
+				<td>
+					<input type="text" name="name" class="text" value="${admin.name}" maxlength="200" />
+				</td>
+			</tr>
+		</table>
+		<table class="input">
+			<tr>
+				<th>
+					&nbsp;
+				</th>
+				<td>
+					<input type="submit" class="button" value="${message("admin.common.submit")}" />
+					<input type="button" id="backButton" class="button" value="${message("admin.common.back")}" />
+				</td>
+			</tr>
+		</table>
+	</form>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	[#include "/includes/footer.jhtml" /]
+</body>

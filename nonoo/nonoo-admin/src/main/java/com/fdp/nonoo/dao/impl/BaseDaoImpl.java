@@ -116,19 +116,16 @@ public abstract class BaseDaoImpl<T, ID extends Serializable> implements
 
 	public Page<T> findPage(Pageable pageable) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<T> criteriaQuery = criteriaBuilder
-				.createQuery(entityClass);
+		CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
 		criteriaQuery.select(criteriaQuery.from(entityClass));
 		return pageQuery(criteriaQuery, pageable);
 	}
 
 	public long count(Filter[] filters) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<T> criteriaQuery = criteriaBuilder
-				.createQuery(entityClass);
+		CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
 		criteriaQuery.select(criteriaQuery.from(entityClass));
-		return queryCount(criteriaQuery,
-				(filters != null) ? Arrays.asList(filters) : null);
+		return queryCount(criteriaQuery,(filters != null) ? Arrays.asList(filters) : null);
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -142,14 +139,12 @@ public abstract class BaseDaoImpl<T, ID extends Serializable> implements
 		queryFilter(query, filters);
 		queryOrder(query, orders);
 		if (query.getOrderList().isEmpty())
-			if (OrderEntity.class.isAssignableFrom(entityClass))
-				query.orderBy(new javax.persistence.criteria.Order[] { criteriaBuilder
-						.asc(root.get("order")) });
-			else
-				query.orderBy(new javax.persistence.criteria.Order[] { criteriaBuilder
-						.desc(root.get("createDate")) });
-		TypedQuery<T> typedQuery = entityManager.createQuery(query)
-				.setFlushMode(FlushModeType.COMMIT);
+			if (OrderEntity.class.isAssignableFrom(entityClass)){
+				query.orderBy(new javax.persistence.criteria.Order[] { criteriaBuilder.asc(root.get("order")) });
+			}else{
+				query.orderBy(new javax.persistence.criteria.Order[] { criteriaBuilder.desc(root.get("createDate")) });
+			}
+		TypedQuery<T> typedQuery = entityManager.createQuery(query).setFlushMode(FlushModeType.COMMIT);
 		if (first != null)
 			typedQuery.setFirstResult(first);
 		if (count != null)
@@ -162,28 +157,28 @@ public abstract class BaseDaoImpl<T, ID extends Serializable> implements
 		Assert.notNull(query);
 		Assert.notNull(query.getSelection());
 		Assert.notEmpty(query.getRoots());
-		if (pageable == null)
+		if (pageable == null){
 			pageable = new Pageable();
+		}
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		Root root = getRoot(query);
 		getPageFilter(query, pageable);
 		getPageOrder(query, pageable);
 		if (query.getOrderList().isEmpty()) {
-			if (OrderEntity.class.isAssignableFrom(entityClass))
-				query.orderBy(new javax.persistence.criteria.Order[] { criteriaBuilder
-						.asc(root.get("order")) });
-			else
-				query.orderBy(new javax.persistence.criteria.Order[] { criteriaBuilder
-						.desc(root.get("createDate")) });
+			if (OrderEntity.class.isAssignableFrom(entityClass)){
+				query.orderBy(new javax.persistence.criteria.Order[] { criteriaBuilder.asc(root.get("order")) });
+			}
+			else{
+				query.orderBy(new javax.persistence.criteria.Order[] { criteriaBuilder.desc(root.get("createDate")) });
+			}
 		}
 		long total = queryCount(query, null);
 		int pageSize = (int) Math.ceil(total / pageable.getPageSize());
-		if (pageSize < pageable.getPageNumber())
+		if (pageSize < pageable.getPageNumber()){
 			pageable.setPageNumber(pageSize);
-		TypedQuery<T> typedQuery = entityManager.createQuery(query)
-				.setFlushMode(FlushModeType.COMMIT);
-		typedQuery.setFirstResult((pageable.getPageNumber() - 1)
-				* pageable.getPageSize());
+		}
+		TypedQuery<T> typedQuery = entityManager.createQuery(query).setFlushMode(FlushModeType.COMMIT);
+		typedQuery.setFirstResult((pageable.getPageNumber() - 1)* pageable.getPageSize());
 		typedQuery.setMaxResults(pageable.getPageSize());
 		return new Page<T>(typedQuery.getResultList(), total, pageable);
 	}

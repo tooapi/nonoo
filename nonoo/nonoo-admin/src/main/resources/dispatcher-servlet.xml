@@ -13,6 +13,26 @@
 
 	<mvc:annotation-driven validator="validator" />
 	
+	
+	<mvc:interceptors>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean id="openSessionInViewInterceptor"
+				class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
+				<property name="entityManagerFactory" ref="entityManagerFactory" />
+			</bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean id="listInterceptor" class="com.fdp.nonoo.interceptor.ListInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean id="logInterceptor" class="com.fdp.nonoo.interceptor.LogInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
