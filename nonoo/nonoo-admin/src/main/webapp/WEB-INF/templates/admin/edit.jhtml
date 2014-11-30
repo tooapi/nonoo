@@ -23,114 +23,89 @@
 		<div class="row">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<form id="inputForm" action="update.jhtml" method="post">
-		<input type="hidden" name="id" value="${admin.id}" />
-		<ul id="tab" class="tab">
-			<li>
-				<input type="button" value="${message("admin.admin.base")}" />
-			</li>
-			<li>
-				<input type="button" value="${message("admin.admin.profile")}" />
-			</li>
-		</ul>
-		<table class="input tabContent">
-			<tr>
-				<th>
-					${message("Admin.username")}:
-				</th>
-				<td>
-					${admin.username}
-				</td>
-			</tr>
-			<tr>
-				<th>
-					${message("Admin.password")}:
-				</th>
-				<td>
-					<input type="password" id="password" name="password" class="text" maxlength="20" />
-				</td>
-			</tr>
-			<tr>
-				<th>
-					${message("admin.admin.rePassword")}:
-				</th>
-				<td>
-					<input type="password" name="rePassword" class="text" maxlength="20" />
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<span class="requiredField">*</span>${message("Admin.email")}:
-				</th>
-				<td>
-					<input type="text" name="email" class="text" value="${admin.email}" maxlength="200" />
-				</td>
-			</tr>
-			<tr class="roles">
-				<th>
-					<span class="requiredField">*</span>${message("Admin.roles")}:
-				</th>
-				<td>
-					<span class="fieldSet">
-						[#list roles as role]
-							<label>
-								<input type="checkbox" name="roleIds" value="${role.id}"[#if admin.roles?seq_contains(role)] checked="checked"[/#if] />${role.name}
-							</label>
-						[/#list]
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					${message("admin.common.setting")}:
-				</th>
-				<td>
-					<label>
-						<input type="checkbox" name="isEnabled" value="true"[#if admin.isEnabled] checked="checked"[/#if] />${message("Admin.isEnabled")}
-						<input type="hidden" name="_isEnabled" value="false" />
-					</label>
-					[#if admin.isLocked]
-						<label>
-							<input type="checkbox" name="isLocked" value="true" checked="checked" />${message("Admin.isLocked")}
-							<input type="hidden" name="_isLocked" value="false" />
-						</label>
-					[/#if]
-				</td>
-			</tr>
-		</table>
-		<table class="input tabContent">
-			<tr>
-				<th>
-					${message("Admin.department")}:
-				</th>
-				<td>
-					<input type="text" name="department" class="text" value="${admin.department}" maxlength="200" />
-				</td>
-			</tr>
-			<tr>
-				<th>
-					${message("Admin.name")}:
-				</th>
-				<td>
-					<input type="text" name="name" class="text" value="${admin.name}" maxlength="200" />
-				</td>
-			</tr>
-		</table>
-		<table class="input">
-			<tr>
-				<th>
-					&nbsp;
-				</th>
-				<td>
-					<input type="submit" class="button" value="${message("admin.common.submit")}" />
-					<input type="button" id="backButton" class="button" value="${message("admin.common.back")}" />
-				</td>
-			</tr>
-		</table>
-	</form>
+
+					<div class="container">
+						<div class="col-md-6 ">
+
+							<form id="inputForm" class="form-horizontal" action="update.jhtml" method="post">
+								<input type="hidden" name="id" value="${admin.id}" />
+
+								<div class="form-group">
+									<label class="control-label">${message("Admin.username")}:</label>
+									<div>${admin.username}</div>
+								</div>
+
+
+								<div class="form-group">
+									<label class="control-label">${message("Admin.password")}:</label>
+									<div>
+										<input type="password" class="form-control " name="password" id="password" placeholder="">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label">${message("Admin.rePassword")}:</label>
+									<div>
+										<input type="password" class="form-control " name="rePassword" id="rePassword" placeholder="">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label"><span class="requiredField">*</span>${message("Admin.email")}:</label>
+									<div>
+										<input type="text" class="form-control " name="email" id="email" value="${admin.email}">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label"><span
+										class="requiredField">*</span>${message("Admin.roles")}:</label>
+									<div>
+										[#list roles as role] <label> 
+										<input type="checkbox"name="roleIds" value="${role.id}" 
+											[#if admin.roles ? seq_contains(role)] checked="checked" [/#if] />${role.name}
+										</label> [/#list]
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label">${message("admin.common.setting")}:</label>
+									<div>
+										<input type="checkbox" name="isEnabled" value="true" [#if admin.isEnabled] checked="checked" [/#if] />${message("Admin.isEnabled")}
+										<input type="hidden" name="_isEnabled" value="false" /> [#if admin.isLocked] 
+										<input type="checkbox" name="isLocked"value="true" checked="checked" />${message("Admin.isLocked")}
+										<input type="hidden" name="_isLocked" value="false" /> [/#if]
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label">${message("Admin.department")}:</label>
+									<div>
+										<input type="text" class="form-control " name="department"
+											id="department" value="${admin.department}">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label">${message("Admin.name")}:</label>
+									<div>
+										<input type="text" class="form-control " name="name" id="name" value="${admin.name}">
+									</div>
+								</div>
+								
+								<div class="form-group">
+							
+							      <button type="submit" class="btn btn-success  ">${message("admin.common.submit")}</button> 
+							      <button type="button" class="btn btn-success  ">${message("admin.common.back")}</button>  
+							    </div>
+								
+							</form>
+						</div>
+					</div>
+					
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
 
