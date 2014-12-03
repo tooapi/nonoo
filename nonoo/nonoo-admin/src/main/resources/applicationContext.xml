@@ -113,9 +113,7 @@
 		<property name="freemarkerVariables">
 			<map>
 				<entry key="base" value="#{servletContext.contextPath}" />
-				<entry key="base" value="#{servletContext.contextPath}" />
 				<entry key="locale" value="${locale}" />
-				<entry key="setting" value="#{T(com.fdp.nonoo.util.SettingUtils).get()}" />
 				<entry key="message" value-ref="messageMethod" />
 				
 				

@@ -1,7 +1,6 @@
 <%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="com.fdp.nonoo.NonooContext"%>
-<%@page import="com.fdp.nonoo.util.SettingUtils"%>
 <%@page import="com.fdp.nonoo.util.SpringUtils"%>
 <%@page import="org.apache.shiro.web.filter.authc.FormAuthenticationFilter"%>
 <%@page import="java.util.UUID"%>
@@ -40,7 +39,7 @@
 	if (applicationContext != null) {
 %>
 		<shiro:authenticated>
-		<%response.sendRedirect(base + "/common/main.jhtml");%>
+		<%response.sendRedirect(base + "/common/index.jhtml");%>
 		</shiro:authenticated>
 <%}%>
 <!DOCTYPE html>

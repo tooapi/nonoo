@@ -5,7 +5,7 @@
 String base = request.getContextPath();
 ApplicationContext applicationContext = SpringUtils.getApplicationContext();
 if (applicationContext != null) {
-	response.sendRedirect(base + "/common/main.jhtml");
+	response.sendRedirect(base + "/common/index.jhtml");
 } else {
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

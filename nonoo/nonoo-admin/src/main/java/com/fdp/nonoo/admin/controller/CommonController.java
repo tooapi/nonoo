@@ -42,10 +42,7 @@ public class CommonController implements ServletContextAware {
 		this.servletContext = servletContext;
 	}
 
-	@RequestMapping(value = { "/main" }, method = { RequestMethod.GET })
-	public String main() {
-		return "/common/main";
-	}
+	
 
 	@RequestMapping(value = { "/index" }, method = { RequestMethod.GET })
 	public String index(ModelMap model) {
