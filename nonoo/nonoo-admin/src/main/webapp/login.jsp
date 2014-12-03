@@ -1,13 +1,11 @@
 <%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
-<%@page import="com.fdp.nonoo.common.Setting"%>
+<%@page import="com.fdp.nonoo.NonooContext"%>
 <%@page import="com.fdp.nonoo.util.SettingUtils"%>
 <%@page import="com.fdp.nonoo.util.SpringUtils"%>
 <%@page import="org.apache.shiro.web.filter.authc.FormAuthenticationFilter"%>
 <%@page import="java.util.UUID"%>
-<%@page import="com.fdp.nonoo.common.Setting.AccountLockType"%>
 <%@page import="org.apache.commons.lang.ArrayUtils"%>
-<%@page import="com.fdp.nonoo.common.Setting.CaptchaType"%>
 <%@page import="java.security.interfaces.RSAPublicKey"%>
 <%@page import="org.apache.commons.codec.binary.Base64"%>
 <%@page import="com.fdp.nonoo.service.RSAService"%>
@@ -16,7 +14,7 @@
 	String base = request.getContextPath();
 	String captchaId = UUID.randomUUID().toString();
 	ApplicationContext applicationContext = SpringUtils.getApplicationContext();
-	Setting setting = SettingUtils.get();
+	
 	String message = null;
 	String loginFailure = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
 	if (loginFailure != null) {
@@ -29,7 +27,7 @@
 		} else if (loginFailure.equals("org.apache.shiro.authc.LockedAccountException")) {
 			message = "admin.login.lockedAccount";
 		} else if (loginFailure.equals("org.apache.shiro.authc.IncorrectCredentialsException")) {
-			if (ArrayUtils.contains(setting.getAccountLockTypes(), AccountLockType.admin)) {
+			if (ArrayUtils.contains(NonooContext.getAccountlocktypes(), NonooContext.AccountLockType.admin)) {
 				message = "admin.login.accountLockCount";
 			} else {
 				message = "admin.login.incorrectCredentials";
@@ -126,6 +124,19 @@
 		</div>
 	</div>
 
+<footer class="footer">
+	 <p>
+        <a href="http://www.oray.com/about/about.html">关于我们</a> |
+        <a href="http://www.oray.com/about/contact.html">联系我们</a> |
+        <a href="http://www.oray.com/about/jobs.html">招聘信息</a> |
+        <a href="http://www.oray.com/about/privacy.html">隐私保护</a> |
+        <a href="http://www.oray.com/about/copyright.html">版权声明</a> |
+        <a href="http://open.oray.com/">开发者平台</a>
+    </p>
+    <div class="container">
+    <p class="copyright">Copyright &copy; 2002-2014 Oray. All Rights Reserved.</p>
+    </div>
+</footer>
 <script src="${base}resources/jquery/jquery.min.js"></script>
 <script src="${base}resources/jquery/jquery.cookie.js"></script>
 <script src="${base}resources/bootstrap/js/bootstrap.min.js"></script>

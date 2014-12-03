@@ -20,10 +20,10 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
+import com.fdp.nonoo.NonooContext;
 import com.fdp.nonoo.entity.Admin;
 import com.fdp.nonoo.service.AdminService;
 import com.fdp.nonoo.service.CaptchaService;
-import com.fdp.nonoo.util.SettingUtils;
 
 
 public class AuthenticationRealm extends AuthorizingRealm {
@@ -41,7 +41,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
 		String captchaId = authToken.getCaptchaId();
 		String captcha = authToken.getCaptcha();
 		String hostIp = authToken.getHost();
-		if (!captchaService.isValid(Setting.CaptchaType.adminLogin, captchaId,captcha)) {
+		if (!captchaService.isValid(NonooContext.CaptchaType.adminLogin, captchaId,captcha)) {
 			throw new UnsupportedTokenException();
 		}
 		if ((username != null) && (password != null)) {
@@ -53,11 +53,11 @@ public class AuthenticationRealm extends AuthorizingRealm {
 			if (!admin.getIsEnabled()) {
 				throw new DisabledAccountException();
 			}
-			Setting setting = SettingUtils.get();
+			
 			int i;
 			if (admin.getIsLocked()) {
-				if (ArrayUtils.contains(setting.getAccountLockTypes(),Setting.AccountLockType.admin)) {
-					i = setting.getAccountLockTime();
+				if (ArrayUtils.contains(NonooContext.getAccountlocktypes(),NonooContext.AccountLockType.admin)) {
+					i = NonooContext.getAccountlocktime();
 					if (i == 0) {
 						throw new LockedAccountException();
 					}
@@ -78,7 +78,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
 			}
 			if (!password.equals(admin.getPassword())) {
 				i = admin.getLoginFailureCount() + 1;
-				if (i >= setting.getAccountLockCount()) {
+				if (i >= NonooContext.getAccountlockcount()) {
 					admin.setIsLocked(true);
 					admin.setLockedDate(new Date());
 				}

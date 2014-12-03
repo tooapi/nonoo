@@ -1,23 +1,22 @@
 <footer class="footer">
-	<div class="container">
-		 <div class="row">
-		 	  © 2014 noo.com &nbsp; 京ICP备13017353号-3 &nbsp; 京公网安备11010802012357号
-      </div>
-	</div>
+	 <p>
+        <a href="http://www.oray.com/about/about.html">关于我们</a> |
+        <a href="http://www.oray.com/about/contact.html">联系我们</a> |
+        <a href="http://www.oray.com/about/jobs.html">招聘信息</a> |
+        <a href="http://www.oray.com/about/privacy.html">隐私保护</a> |
+        <a href="http://www.oray.com/about/copyright.html">版权声明</a> |
+        <a href="http://open.oray.com/">开发者平台</a>
+    </p>
+    <p class="copyright">Copyright &copy; 2002-2014 Oray. All Rights Reserved.</p>
 </footer>
 <script src="${base}/resources/jquery/jquery.min.js"></script>
 <script src="${base}/resources/jquery/jquery.cookie.js"></script>
 <script src="${base}/resources/bootstrap/js/bootstrap.min.js"></script>
-
-
-
-
-
-  <!-- datatable -->
-	<script src="${base}/resources/lib/datatables/jquery.dataTables.min.js"></script>
-	<script src="${base}/resources/lib/datatables/extras/Scroller/media/js/dataTables.scroller.min.js"></script>
-	<!-- datatable table tools -->
-    <script src="${base}/resources/lib/datatables/extras/TableTools/media/js/TableTools.min.js"></script>
-    <script src="${base}/resources/lib/datatables/extras/TableTools/media/js/ZeroClipboard.js"></script>
-    <!-- datatables bootstrap integration -->
-    <script src="${base}/resources/lib/datatables/jquery.dataTables.bootstrap.min.js"></script>
+ <!-- datatable -->
+<script src="${base}/resources/lib/datatables/jquery.dataTables.min.js"></script>
+<script src="${base}/resources/lib/datatables/extras/Scroller/media/js/dataTables.scroller.min.js"></script>
+<!-- datatable table tools -->
+<script src="${base}/resources/lib/datatables/extras/TableTools/media/js/TableTools.min.js"></script>
+<script src="${base}/resources/lib/datatables/extras/TableTools/media/js/ZeroClipboard.js"></script>
+<!-- datatables bootstrap integration -->
+<script src="${base}/resources/lib/datatables/jquery.dataTables.bootstrap.min.js"></script>

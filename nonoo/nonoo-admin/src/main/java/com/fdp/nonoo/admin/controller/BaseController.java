@@ -1,6 +1,5 @@
 package com.fdp.nonoo.admin.controller;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
@@ -17,10 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fdp.nonoo.common.DateEditor;
 import com.fdp.nonoo.common.Message;
-import com.fdp.nonoo.common.Setting;
 import com.fdp.nonoo.entity.Log;
 import com.fdp.nonoo.support.freemaker.directive.FlashMessageDirective;
-import com.fdp.nonoo.util.SettingUtils;
 import com.fdp.nonoo.util.SpringUtils;
 
 public class BaseController {
@@ -60,16 +57,16 @@ public class BaseController {
 		return false;
 	}
 
-	protected String currency(BigDecimal paramBigDecimal,
-			boolean paramBoolean1, boolean paramBoolean2) {
-		Setting setting = SettingUtils.get();
-		String str = setting.setScale(paramBigDecimal).toString();
-		if (paramBoolean1)
-			str = setting.getCurrencySign() + str;
-		if (paramBoolean2)
-			str = str + setting.getCurrencyUnit();
-		return str;
-	}
+	// protected String currency(BigDecimal amount,
+	// boolean isCurrencySign, boolean isCurrencyUnit) {
+	// Setting setting = SettingUtils.get();
+	// String str = setting.setScale(amount).toString();
+	// if (isCurrencySign)
+	// str = NonooContext.getCurrencysign() + str;
+	// if (isCurrencyUnit)
+	// str = str + NonooContext.getCurrencyunit();
+	// return str;
+	// }
 
 	protected String getMessage(String message, Object[] params) {
 		return SpringUtils.getMessage(message, params);
@@ -84,10 +81,8 @@ public class BaseController {
 	protected void log(String message) {
 		if (message == null)
 			return;
-		RequestAttributes requestAttributes = RequestContextHolder
-				.currentRequestAttributes();
-		requestAttributes.setAttribute(Log.LOG_CONTENT_ATTRIBUTE_NAME, message,
-				0);
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		requestAttributes.setAttribute(Log.LOG_CONTENT_ATTRIBUTE_NAME, message,0);
 	}
 
 }

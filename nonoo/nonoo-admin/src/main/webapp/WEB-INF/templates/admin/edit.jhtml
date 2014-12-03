@@ -14,9 +14,10 @@
 
 		<div>
 			<ol class="breadcrumb">
+			    <li><a href="#"><i class="glyphicon glyphicon-home"></i></a>  </li>
 				<li><a href='http://www.nonoo.net/'>系统管理</a></li>
-				<li><a href='/plus/list.php?tid=1'>地区设置</a></li>
-				<li>地区列表</li>
+				<li><a href='/plus/list.php?tid=1'>管理员设置</a></li>
+				<li>添加管理员</li>
 			</ol>
 		</div>
 
@@ -26,7 +27,7 @@
 
 					<div class="container">
 						<div class="col-md-6 ">
-
+                      
 							<form id="inputForm" class="form-horizontal" action="update.jhtml" method="post">
 								<input type="hidden" name="id" value="${admin.id}" />
 
@@ -44,7 +45,7 @@
 								</div>
 
 								<div class="form-group">
-									<label class="control-label">${message("Admin.rePassword")}:</label>
+									<label class="control-label">${message("Admin.repassword")}:</label>
 									<div>
 										<input type="password" class="form-control " name="rePassword" id="rePassword" placeholder="">
 									</div>
@@ -94,9 +95,10 @@
 								</div>
 								
 								<div class="form-group">
-							
-							      <button type="submit" class="btn btn-success  ">${message("admin.common.submit")}</button> 
-							      <button type="button" class="btn btn-success  ">${message("admin.common.back")}</button>  
+							      
+							      <button class="btn btn-default" type="submit">${message("admin.common.submit")}</button>
+				                  <button class="btn btn-default">${message("admin.common.back")}</button>
+							   
 							    </div>
 								
 							</form>

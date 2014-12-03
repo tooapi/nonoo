@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nonoo> 
+	<logConfig operation="系统设置" urlPattern="/admin/setting/update.jhtml"/>  
+	<logConfig operation="添加管理员" urlPattern="/admin/admin/save.jhtml"/>  
+	<logConfig operation="编辑管理员" urlPattern="/admin/admin/update.jhtml"/>  
+	<logConfig operation="删除管理员" urlPattern="/admin/admin/delete.jhtml"/>  
+	<template id="frontCommonJs" type="page" name="front_common_js" templatePath="/front/js/common.ftl" staticPath="/resources/front/js/common.js"/>  
+	<template id="adminCommonJs" type="page" name="admin_common_js" templatePath="/admin/js/common.ftl" staticPath="/resources/admin/js/common.js"/>  
+	<template id="sitemapIndex" type="page" name="sitemap索引" templatePath="/front/xml/sitemap_index.ftl" staticPath="/sitemap/index.xml"/>  
+	<template id="sitemap" type="page" name="sitemap" templatePath="/front/xml/sitemap.ftl" staticPath="/sitemap/${index}.xml"/>  
+	<template id="index" type="page" name="首页" templatePath="/front/index.ftl" staticPath="/index.html"/>
+	<template id="changecity" type="page" name="切换城市" templatePath="/front/changecity.ftl" staticPath="/changecity.html"/>   
+	<template id="articleContent" type="page" name="文章内容" templatePath="/front/article/content.ftl" staticPath="/article/content/${createDate?string('yyyyMM')}/${id}/${pageNumber!1}.html"/>  
+	<template id="productContent" type="page" name="商品内容" templatePath="/front/product/content.ftl" staticPath="/product/content/${createDate?string('yyyyMM')}/${id}.html"/>  
+	<template id="articleList" type="page" name="文章列表" templatePath="/front/article/list.ftl"/>  
+	<template id="productList" type="page" name="商品列表" templatePath="/front/product/list.ftl"/>  
+	<template id="brandList" type="page" name="品牌列表" templatePath="/front/brand/list.ftl"/>  
+	<template id="brandContent" type="page" name="品牌内容" templatePath="/front/brand/content.ftl"/>  
+	<template id="promotionContent" type="page" name="促销内容" templatePath="/front/promotion/content.ftl"/>  
+	<template id="productCategory" type="page" name="商品分类" templatePath="/front/product_category/index.ftl"/>  
+	<template id="friendLink" type="page" name="友情链接" templatePath="/front/friend_link/index.ftl"/>  
+	<template id="testMail" type="mail" name="邮件测试" templatePath="/admin/setting/mail.ftl"/>  
+	<template id="productNotifyMail" type="mail" name="到货通知" templatePath="/front/product_notify/mail.ftl"/>  
+	<template id="findPasswordMail" type="mail" name="找回密码" templatePath="/front/password/mail.ftl"/>  
+	<template id="orderPrint" type="print" name="订单打印" templatePath="/admin/print/order.ftl"/>  
+	<template id="productPrint" type="print" name="购物单打印" templatePath="/admin/print/product.ftl"/>  
+	<template id="shippingPrint" type="print" name="配送单打印" templatePath="/admin/print/shipping.ftl"/> 
+</nonoo>

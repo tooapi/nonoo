@@ -8,9 +8,8 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
-import com.fdp.nonoo.common.Setting;
+import com.fdp.nonoo.NonooContext;
 import com.fdp.nonoo.service.CaptchaService;
-import com.fdp.nonoo.util.SettingUtils;
 
 @Service("captchaService")
 public class CaptchaServiceImpl implements CaptchaService {
@@ -22,11 +21,10 @@ public class CaptchaServiceImpl implements CaptchaService {
 		return (BufferedImage) imageCaptchaService.getChallengeForID(captchaId);
 	}
 
-	public boolean isValid(Setting.CaptchaType captchaType, String captchaId,
+	public boolean isValid(NonooContext.CaptchaType captchaType, String captchaId,
 			String captcha) {
 		
-		Setting setting = SettingUtils.get();
-		if ((captchaType == null)|| (ArrayUtils.contains(setting.getCaptchaTypes(), captchaType))) {
+		if ((captchaType == null)|| (ArrayUtils.contains(NonooContext.getCaptchatypes(), captchaType))) {
 			if ((StringUtils.isNotEmpty(captchaId))&& (StringUtils.isNotEmpty(captcha))) {
 				try {
 					return imageCaptchaService.validateResponseForID(captchaId, captcha.toUpperCase());

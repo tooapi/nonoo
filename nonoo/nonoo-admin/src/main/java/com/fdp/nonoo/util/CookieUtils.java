@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.util.Assert;
 
-import com.fdp.nonoo.common.Setting;
+import com.fdp.nonoo.NonooContext;
 
 public final class CookieUtils {
 	public static void addCookie(HttpServletRequest request,
@@ -41,14 +41,14 @@ public final class CookieUtils {
 	public static void addCookie(HttpServletRequest request,
 			HttpServletResponse response, String name, String value,
 			Integer maxAge) {
-		Setting setting = SettingUtils.get();
-		addCookie(request, response, name, value, maxAge,setting.getCookiePath(), setting.getCookieDomain(),null);
+		
+		addCookie(request, response, name, value, maxAge,NonooContext.getCookiepath(), NonooContext.getCookiedomain(),null);
 	}
 
 	public static void addCookie(HttpServletRequest request,
 			HttpServletResponse response, String name, String value) {
-		Setting setting = SettingUtils.get();
-		addCookie(request, response, name, value, null,setting.getCookiePath(), setting.getCookieDomain(),null);
+	
+		addCookie(request, response, name, value, null,NonooContext.getCookiepath(), NonooContext.getCookiedomain(),null);
 	}
 
 	public static String getCookie(HttpServletRequest request, String name) {
@@ -91,7 +91,7 @@ public final class CookieUtils {
 
 	public static void removeCookie(HttpServletRequest request,
 			HttpServletResponse response, String name) {
-		Setting setting = SettingUtils.get();
-		removeCookie(request, response, name, setting.getCookiePath(),setting.getCookieDomain());
+		
+		removeCookie(request, response, name, NonooContext.getCookiepath(),NonooContext.getCookiedomain());
 	}
 }

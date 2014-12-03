@@ -11,11 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.fdp.nonoo.service.CacheService;
-import com.fdp.nonoo.util.SettingUtils;
 
-import freemarker.template.TemplateModelException;
-
-@Service("cacheServiceImpl")
+@Service("cacheService")
 public class CacheServiceImpl implements CacheService {
 
 	@Resource(name = "ehCacheManager")
@@ -28,8 +25,7 @@ public class CacheServiceImpl implements CacheService {
 	private FreeMarkerConfigurer freeMarkerConfigurer;
 
 	public String getDiskStorePath() {
-		return ehCacheManager.getConfiguration()
-				.getDiskStoreConfiguration().getPath();
+		return ehCacheManager.getConfiguration().getDiskStoreConfiguration().getPath();
 	}
 
 	public int getCacheSize() {
@@ -52,11 +48,11 @@ public class CacheServiceImpl implements CacheService {
 			"consultation", "promotion" }, allEntries = true)
 	public void clear() {
 		messageSource.clearCache();
-		try {
-			freeMarkerConfigurer.getConfiguration().setSharedVariable("setting", SettingUtils.get());
-		} catch (TemplateModelException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			freeMarkerConfigurer.getConfiguration().setSharedVariable("setting", SettingUtils.get());
+//		} catch (TemplateModelException e) {
+//			e.printStackTrace();
+//		}
 		freeMarkerConfigurer.getConfiguration().clearTemplateCache();
 	}
 }

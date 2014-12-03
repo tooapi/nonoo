@@ -1,15 +1,26 @@
-
-
-
-
-.tool_head_img{
+.tool_head_img {
 	border: 2px solid #fff;
-    border-radius: 100%;
-    margin: -4px 8px 0 0;
-    max-width: 40px !important;
+	border-radius: 100%;
+	margin: -4px 8px 0 0;
+	max-width: 40px !important;
 }
 
-.body{
+.body {
 	margin-top: 60px;
-	
+}
+
+.requiredField {
+	font-size: 13px;
+	color: #ff0000;
+	font-family: helvetica, arial, sans-serif
+}
+
+
+
+
+.footer {
+    color: #777;
+    padding: 30px 0;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 70px;
 }
