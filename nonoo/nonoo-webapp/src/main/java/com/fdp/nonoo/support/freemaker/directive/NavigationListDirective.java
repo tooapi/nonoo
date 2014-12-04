@@ -22,7 +22,7 @@ import freemarker.template.TemplateModel;
 public class NavigationListDirective extends BaseDirective {
 	private static final String DEFAULT_VARIABLE_NAME = "navigations";
 
-	@Resource(name = "navigationServiceImpl")
+	@Resource(name = "navigationService")
 	private NavigationService navigationService;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

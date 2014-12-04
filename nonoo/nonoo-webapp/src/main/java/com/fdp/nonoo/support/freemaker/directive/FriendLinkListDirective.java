@@ -22,7 +22,7 @@ import freemarker.template.TemplateModel;
 public class FriendLinkListDirective extends BaseDirective {
 	private static final String DEFAULT_VARIABLE_NAME = "friendLinks";
 
-	@Resource(name = "friendLinkServiceImpl")
+	@Resource(name = "friendLinkService")
 	private FriendLinkService friendLinkService;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

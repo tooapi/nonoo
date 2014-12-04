@@ -26,10 +26,10 @@ import com.fdp.nonoo.service.RSAService;
 @RequestMapping({ "/common" })
 public class CommonController {
 
-	@Resource(name = "captchaServiceImpl")
+	@Resource(name = "captchaService")
 	private CaptchaService captchaService;
 
-	@Resource(name = "rsaServiceImpl")
+	@Resource(name = "rsaService")
 	private RSAService rsaService;
 
 	@RequestMapping({ "/resource_not_found" })

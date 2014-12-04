@@ -32,7 +32,6 @@ public final class CookieUtils {
 				cookie.setDomain(domain);
 			}
 			if (secure != null) {
-				System.out.println("------------------------------cooke set true");
 				cookie.setSecure(secure);
 			}
 			response.addCookie(cookie);
