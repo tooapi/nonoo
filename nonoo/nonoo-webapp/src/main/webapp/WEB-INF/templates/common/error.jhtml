@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>Index</title>
+[#include  "/includes/top.jhtml" /]
+
+</head>
+<body>
+	[#include  "/includes/header.jhtml" /]
+
+
+
+	${e};
+
+[#include  "/includes/footer.jhtml" /]
+<script src="${base}/resources/common/login.js"></script>
+</body>
+</html>

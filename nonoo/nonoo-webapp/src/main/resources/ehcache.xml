@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+	<diskStore path="${java.io.tmpdir}/${system.project_name}/cache" />
+	<cache name="friendLink" maxElementsInMemory="500" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="true" />
+	<cache name="navigation" maxElementsInMemory="500" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="true" />
+</ehcache>

@@ -1,0 +1,54 @@
+
+
+
+
+<footer class="footer">
+	<div class="container">
+		 <div class="row">
+		 	[@navigation_list position = "bottom" parent=NULL ]
+				[#list navigations as navigation]
+					 <div class="col-md-3">
+			            <ul class="column">
+				            <li><h3>${navigation.name}</h3></li>
+				            [#macro nav child]
+	                            <li><a href="/tour">${child.name}</a></li>
+                            [/#macro]
+                            [#list navigation.children as child]
+                                [@nav child=child/>
+                            [/#list]
+				        </ul>
+                    </div>
+				[/#list]
+			[/@navigation_list]
+      </div>
+	</div>
+	 <div class="text-center">
+        © 2014 noo.com &nbsp; 京ICP备13017353号-3 &nbsp; 京公网安备11010802012357号
+    </div>
+</footer>
+
+
+
+<script src="${base}/resources/jquery/2.1.0/jquery.min.js"></script>
+<script src="${base}/resources/jquery/cookie/jquery.cookie.js"></script>
+<script src="${base}/resources/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="${base}/resources/jquery/validate/1.12/jquery.validate.min.js"></script>
+<script src="${base}/resources/common.js"></script>
+
+ <script type="text/javascript">
+     $().ready(function() {
+    	 
+    	 var $headerLogin = $("#headerLogin");
+    	 var $headerRegister = $("#headerRegister");
+    	 var $headerUsername = $("#headerUsername");
+    	 var $headerInfo = $("#headerInfo");
+    	 var username =$.cookie("username");
+    	 if (username != null) {
+    			$headerUsername.text("你好, " + username).show();
+    			$headerInfo.show();
+    		} else {
+    			$headerLogin.show();
+    			$headerRegister.show();
+    		}
+     });
+    </script>

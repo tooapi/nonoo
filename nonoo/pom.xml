@@ -233,12 +233,21 @@
 			</dependency>
 
 
+			<!-- ehcache -->
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache</artifactId>
+				<version>2.8.3</version>
+			</dependency>
+
+
 			<!-- Jcaptcha -->
 			<dependency>
 				<groupId>com.octo.captcha</groupId>
-				<artifactId>jcaptcha-all</artifactId>
-				<version>1.0-RC5</version>
+				<artifactId>jcaptcha</artifactId>
+				<version>1.0</version>
 			</dependency>
+
 
 
 
@@ -247,6 +256,15 @@
 				<groupId>org.jsoup</groupId>
 				<artifactId>jsoup</artifactId>
 				<version>1.6.3</version>
+			</dependency>
+
+
+
+			<!-- Jmail -->
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>1.4.4</version>
 			</dependency>
 
 
@@ -268,4 +286,12 @@
 		</snapshotRepository>
 
 	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>jahia</id>
+			<name>jahia</name>
+			<url>http://maven.jahia.org/maven2</url>
+		</repository>
+	</repositories>
 </project>

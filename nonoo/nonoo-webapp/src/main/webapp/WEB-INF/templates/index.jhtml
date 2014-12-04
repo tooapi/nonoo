@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>[@spring.message "site.index.title" /]</title>
+     [#include "/includes/top.jhtml" /]
+  </head>
+<body>
+
+ [#include "/includes/header.jhtml" /]
+ 
+ <!-- 广告区域 -->
+   <!-- Carousel  ================================================== -->
+    <div class="carousel slide">
+     
+      <div class="carousel-inner">
+        <div class="item active masthead">
+          <div class="masthead-bg"></div>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Noo</h1>
+              <h2> 一款免费、好用的团队协同工具，让你的团队随时随地一起工作</h2>
+             <a class="btn btn-success btn-lg" href="${base}/register.jhtml">免费注册</a>　
+            </div>
+          </div>
+        </div>
+      </div>
+    
+   </div>
+   
+
+ 
+   
+   
+   
+<div class="container">
+       <h3 >
+        <span>提升团队生产力</span>
+       </h3>
+       
+      <div class="row">
+        <div class="col-md-3">
+            <p><img src="${base}/resources/images/index/i1.png" alt="提高效率"/></p>
+            <h4>提高效率</h4>
+            <p>灵活的任务和日程，让团队成员的 效率迅速提升，工作就是这么简单</p>
+
+        </div>
+        <div class="col-md-3">
+            <p><img src="${base}/resources/images/index/i2.png" alt="无缝沟通"/></p>
+            <h4>无缝沟通</h4>
+            <p>简单好用的在线讨论，无处不在的 关注和评论，与团队成员之间无缝沟通</p>
+
+       </div>
+        <div class="col-md-3">
+            <p><img src="${base}/resources/images/index/i3.png" alt="资源共享"/></p>
+            <h4>资源共享</h4>
+            <p>  无共享，不协同，完善的文件共享   让你的团队达到真正意义上的协同</p>
+
+        </div>
+        <div class="col-md-3">
+            <p><img src="${base}/resources/images/index/i4.png" alt="帮助记录"/></p>
+            <h4>帮助记录</h4>
+            <p> 强大的在线文档编辑，帮助团队 记录，积累沉淀形成团队知识库</p>
+
+        </div>
+      </div>
+ </div>
+
+   
+   
+     
+<div class="container">
+       <h3 >
+        <span>用心做好产品</span>
+       </h3>
+       
+      <div class="row">
+        <div class="col-md-3">
+            <p><img src="${base}/resources/images/index/index-other-plan.png" alt="付费方案"/></p>
+            <h4>付费方案</h4>
+            <p>免费版、商业版任您选择</p>
+
+        </div>
+        <div class="col-md-3">
+            <p><img src="${base}/resources/images/index/index-other-mobile.png" alt="移动版"/></p>
+            <h4>移动版</h4>
+            <p> iPhone、Android全平台支持</p>
+
+       </div>
+        <div class="col-md-3">
+            <p><img src="${base}/resources/images/index/index-other-security.png" alt="数据安全"/></p>
+            <h4>数据安全</h4>
+            <p> 保护数据安全，是我们的立身之本</p>
+
+        </div>
+        <div class="col-md-3">
+            <p><img src="${base}/resources/images/index/index-other-feedback.png" alt="用户反馈"/></p>
+            <h4>您的声音</h4>
+            <p>用心倾听您的声音，做好产品</p>
+
+        </div>
+      </div>
+ </div>
+   
+  
+   
+[#include  "/includes/footer.jhtml" /]
+<script src="${base}/resources/jquery/scrollup/jquery.scrollUp.min.js"></script>
+<script src="${base}/resources/common/index.js"></script>
+  </body>
+</html>

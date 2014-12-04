@@ -185,7 +185,6 @@
 		<dependency>
 			<groupId>com.octo.captcha</groupId>
 			<artifactId>jcaptcha</artifactId>
-			<version>1.0</version>
 		</dependency>
 
 
@@ -210,4 +209,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 </project>

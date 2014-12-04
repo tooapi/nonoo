@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>首页</title>
+[#include  "/includes/top.jhtml" /]
+</head>
+<body>
+[#include  "/includes/header.jhtml" /]
+	
+<!-- 广告区域 -->
+<div class="ad" id="content">
+</div>
+<div class="container">
+     <div class="row">    
+        <div class="panel panel-default">
+	          <div class="panel-heading">用户注册</div>
+		      <div class="panel-body">
+                    
+				     <form  class="form-horizontal" id="register" action="${base}/register/submit.jhtml" method="post">
+				    
+				        <div class="form-group">
+				           <label class="col-xs-2 control-label">邮箱：</label>
+				             <div class="col-xs-8 ">
+				               <input type="email" class="form-control" name="email" id="email"  placeholder="由字母、数字、下划线组成，以字母开头" >
+				             </div>
+				        </div>
+				         <div class="form-group">
+				           <label class="col-xs-2 control-label">用户名：</label>
+				             <div class="col-xs-8 ">
+				               <input type="text" class="form-control" name="username" id="username"  placeholder="由字母、数字、下划线组成，以字母开头" >
+				             </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="col-xs-2 control-label">真实姓名：</label>
+				              <div class="col-xs-8 ">
+				                 <input class="form-control" type="text" name="name"  id="name" placeholder="输入真实姓名，方便团队成员认识你" />
+				               </div>
+				         </div>
+				        <div class="form-group">
+				            <label class="col-xs-2 control-label">密码：</label>
+				                <div class="col-xs-8 ">
+				                  <input  class="form-control" type="password"  name="password" id="password" placeholder="请输入密码"  >
+				                 </div>
+				        </div>
+				        <div class="form-group">
+				             <label class="col-xs-2 control-label">确认密码：</label>
+				                 <div class="col-xs-8 ">
+				                   <input class="form-control" type="password" name="repassword"  id="repassword" placeholder="再输入一次密码" />
+				                  </div>
+				         </div>
+				         <div class="form-group">
+				             <div class="col-xs-2"></div>
+				             <div class="col-xs-10">
+				                <button  type="submit" class="btn btn-success" data-loading-text="注册中...">注册新用户</button>
+				             </div>
+				          </div>
+				  
+				     </form>
+				</div>
+          </div>			   
+
+      </div>
+</div>
+[#include  "/includes/footer.jhtml" /]
+<script src="${base}/resources/common/register.js"></script>
+</body>
+</html>
